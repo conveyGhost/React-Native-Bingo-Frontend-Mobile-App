@@ -12,11 +12,11 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="splashScreen" component={Splash} options={{ headerShown: true }}/>
-      <Stack.Screen name="playScreen" component={Play} options={{ headerShown: true }}/>
-      <Stack.Screen name="HomeScreen" component={Home} options={{ headerShown: true }}/>
-      <Stack.Screen name="loginScreen" component={Login} options={{ headerShown: true }}/>
-      <Stack.Screen name="ExplainScreen" component={Explain} options={{ headerShown: true }}/>
+      <Stack.Screen name="splashScreen" component={Splash} options={{ headerShown: false }}/>
+      <Stack.Screen name="playScreen" component={Play} options={{ headerShown: false }}/>
+      <Stack.Screen name="HomeScreen" component={Home} options={{ headerShown: false }}/>
+      <Stack.Screen name="loginScreen" component={Login} options={{ headerShown: false }}/>
+      <Stack.Screen name="ExplainScreen" component={Explain} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 };
