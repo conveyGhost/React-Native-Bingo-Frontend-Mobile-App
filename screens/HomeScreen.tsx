@@ -1,21 +1,29 @@
-import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Dimensions, Linking  } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const screenHeight = Dimensions.get('window').height;
-    const cellSize = screenHeight / 5; 
+const cellSize = screenHeight / 5;
+
+const openWebsite = () => {
+    const url = 'https://newgate-llc.shop/listener/registration';
+    Linking.openURL(url)
+        .catch((err) => console.error('An error occurred', err));
+};
 
 export default function Home() {
-    
+    const navigation = useNavigation();
+
     return (
-            <View style={styles.container}>
-                {/* button position */}
-                <Pressable style={styles.button1} onPress={() => console.log('Button clicked!')}>
-                    <Text style={styles.textTitle}>登　録</Text>
-                </Pressable>
-                
-                <Pressable style={styles.button2} onPress={() => console.log('Button clicked!')}>
-                    <Text style={styles.textTitle}>ゲスト</Text>
-                </Pressable>
-            </View>
+        <View style={styles.container}>
+            {/* button position */}
+            <Pressable style={styles.button1} onPress={() => openWebsite()}>
+                <Text style={styles.textTitle}>アカウント登録</Text>
+            </Pressable>
+
+            <Pressable style={styles.button2} onPress={() => navigation.navigate('loginScreen')}>
+                <Text style={styles.textTitle}>  　ログイン　  </Text>
+            </Pressable>
+        </View>
     );
 }
 
@@ -35,7 +43,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
     },
-    button1:{
+    button1: {
         backgroundColor: '#ff3131',
         paddingVertical: 10,
         paddingHorizontal: 25,
@@ -43,18 +51,19 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 15
     },
-    button2:{
+    button2: {
         backgroundColor: '#ff3131',
         paddingVertical: 10,
         paddingHorizontal: 25,
         borderColor: 'black',
         borderWidth: 1,
-        borderRadius: 15
+        borderRadius: 15,
+        marginTop: cellSize * 0.65
     },
-    textTitle:{
+    textTitle: {
         fontSize: 20,
         color: 'white',
-        fontFamily:'serif',
+        fontFamily: 'serif',
         fontWeight: '700',
 
     }
